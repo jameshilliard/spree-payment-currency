@@ -99,17 +99,17 @@ namespace :spec do
   end
 end
 
-desc 'Generate documentation for the payment_methods_with_range extension.'
+desc 'Generate documentation for the payment_methods_with_currency extension.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'PaymentMethodsWithRangeExtension'
+  rdoc.title    = 'PaymentMethodsWithCurrencyExtension'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
 # For extensions that are in transition
-desc 'Test the payment_methods_with_range extension.'
+desc 'Test the payment_methods_with_currency extension.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
@@ -117,14 +117,14 @@ Rake::TestTask.new(:test) do |t|
 end
 
 namespace :test do
-  desc 'Functional test the payment_methods_with_range extension.'
+  desc 'Functional test the payment_methods_with_currency extension.'
   Rake::TestTask.new(:functionals) do |t|
     t.libs << 'lib'
     t.pattern = 'test/functional/*_test.rb'
     t.verbose = true
   end
 
-  desc 'Unit test the payment_methods_with_range extension.'
+  desc 'Unit test the payment_methods_with_currency extension.'
   Rake::TestTask.new(:units) do |t|
     t.libs << 'lib'
     t.pattern = 'test/unit/*_test.rb'

@@ -1,7 +1,7 @@
 # Uncomment this if you reference any of your controllers in activate
 # require_dependency 'application'
 
-class PaymentMethodsWithRangeExtension < Spree::Extension
+class PaymentMethodsWithCurrencyExtension < Spree::Extension
   version "1.0"
   description "Describe your extension here"
   url "http://yourwebsite.com/payment_methods_with_range"
@@ -14,6 +14,6 @@ class PaymentMethodsWithRangeExtension < Spree::Extension
   
   def activate
     CheckoutsController.send(:include, Spree::Controllers::CheckoutsControllerLoadAvailablePaymentMethods)
-    PaymentMethod.send(:include, Spree::Models::PaymentMethodWithRange)
+    PaymentMethod.send(:include, Spree::Models::PaymentMethodWithCurrency)
   end
 end

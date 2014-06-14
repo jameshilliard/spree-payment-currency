@@ -1,15 +1,13 @@
-module Spree::Models::PaymentMethodWithRange
+module Spree::Models::PaymentMethodWithCurrency
   def self.included(target)
-    target.preference :minimal_order_total, :integer, :default => -1
-    target.preference :maximal_order_total, :integer, :default => -1
+    target.preference :allowable_currency, :string, :default => "ALL"
   end
   
   def available?(order)
     begin
-      return true if self.preferred_minimal_order_total == -1 and self.preferred_maximal_order_total == -1
+      return true if self.allowable_currency == "ALL"
     
-      (self.preferred_minimal_order_total != -1 ? order.total >= self.preferred_minimal_order_total : true) &&
-      (self.preferred_maximal_order_total != -1 ? order.total < self.preferred_maximal_order_total : true)
+      (self.allowable_currency != "ALL" ? order.currency == self.allowable_currency : true)
     rescue NoMethodError => error
       true
     end  

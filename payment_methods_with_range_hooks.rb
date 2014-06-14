@@ -1,4 +1,4 @@
-class PaymentMethodsWithRangeHooks < Spree::ThemeSupport::HookListener
+class PaymentMethodsWithCurrencyHooks < Spree::ThemeSupport::HookListener
 
   #
   # In this file you can modify the content of the hooks available in the default templates
